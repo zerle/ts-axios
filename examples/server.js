@@ -1,25 +1,15 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const webpack = require('webpack')
-const router = express.Router()
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackConfig = require('./webpack.config')
+const routes = require('../routes')
 
 const app = express()
 const compiler = webpack(webpackConfig)
 
-router.get('/simple/get', (req, res) => {
-  res.json({
-    msg: `hello world`
-  })
-})
-
-router.get('/base/get', (req, res) => {
-  res.json(req.query)
-})
-
-app.use(router)
+app.use(bodyParser.json())
 app.use(webpackDevMiddleware(compiler, {
   publicPath: '/__build__/',
   stats: {
@@ -34,6 +24,8 @@ app.use(express.static(__dirname))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.use(routes)
 
 const port = process.env.PORT || 8080
 
