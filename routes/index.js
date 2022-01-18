@@ -48,5 +48,30 @@ router.get('/error/timeout', (req, res)=> {
   }, 3000)
 })
 
+router.get('/extend/get', (req, res) => {
+  res.json(req.body)
+})
+router.post('/extend/post', (req, res) => {
+  res.json(req.body)
+})
+router.delete('/extend/delete', (req, res) => {
+  res.json(req.body)
+})
+router.head('/extend/head', (req, res) => {
+  res.json(req.body)
+})
+router.put('/extend/put', (req, res) => {
+  res.json(req.body)
+})
+router.patch('/extend/patch', (req, res) => {
+  res.json(req.body)
+})
+router.options('/extend/options', (req, res) => {
+  res.json(req.body)
+})
+
+router.get('/extend/user', (req, res) => {
+  res.json('hello msg')
+})
 
 module.exports = router
