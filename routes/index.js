@@ -73,5 +73,8 @@ router.options('/extend/options', (req, res) => {
 router.get('/extend/user', (req, res) => {
   res.json('hello msg')
 })
+router.get('/Interceptor/get', (req, res) => {
+  res.json('hello Interceptor')
+})
 
 module.exports = router
